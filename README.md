@@ -16,6 +16,8 @@ unzip wc2.1_30s_bio.zip
 
 ### contents
 #### data  
+place data here (see setup)
+
 #### scripts  
 ##### 001_format_plink_gwas.R
 Formats genotypes and phenotypes into plink text (.tped, .tfam) files.
@@ -32,4 +34,5 @@ Calculates centered relatedness matrices for gwas and envgwas.
 ##### 005_mlm.sh
 Fits mixed-linear models with gemma.   
 
-### results
+#### results
+results go here
