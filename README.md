@@ -15,21 +15,21 @@ unzip wc2.1_30s_bio.zip
 ```
 
 ### contents
-1. data  
-2. scripts  
-   -001_format_plink_gwas.R
+#### data  
+#### scripts  
+##### 001_format_plink_gwas.R
 Formats genotypes and phenotypes into plink text (.tped, .tfam) files.
 
-   -002_format_plink_egwas.R
+##### 002_format_plink_egwas.R
 Extracts worldclim variables given accession coordinates and formats these values as plink text file.  
 
-   -003_ped2binary.sh
+##### 003_ped2binary.sh
 Converts plink text files into binary and produces set of plink files for gwas and envgwas. 
 
-   -004_rel_mtx.sh
+##### 004_rel_mtx.sh
 Calculates centered relatedness matrices for gwas and envgwas. 
 
-   - 005_mlm.sh
+##### 005_mlm.sh
 Fits mixed-linear models with gemma.   
 
-3. results
+### results
