@@ -55,7 +55,7 @@ write.table(out, "../data/cowpea.tped", sep=" ", quote=F, row.names=F, col.names
 # FORMAT PHENOTYPES INTO TFAM
 ## read in data
 df1<-read_excel("../data/ID-TVu CrossReference (Tchamba_11August2020).xls", sheet="Cowpea characterization")
-df1<-df1[df1$`Accession name` %in% samps,]
+df1<-df1[toupper(df1$`Accession name`) %in% toupper(samps),]
 
 ## generate list of columns to make into dummies (encode qual traits)
 dums<-as.data.frame(cbind(names(df1), unlist(lapply(df1, is.character))))
