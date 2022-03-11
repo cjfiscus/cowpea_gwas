@@ -30,7 +30,7 @@ names(info)<-c("chr", "id", "dummy", "bp")
 
 ## format genotypes
 calls<-df1[,4:ncol(df1)]
-samps<-names(calls)
+samps<-str_replace(names(calls), "Tvu", "TVu")
 
 ## set missing to 0
 calls<-as.data.frame(apply(calls, 2, str_replace, pattern="--", replacement="00"))
