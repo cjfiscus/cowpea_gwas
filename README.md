@@ -5,8 +5,8 @@ Variant filtering and GWAS pipeline for analyses in cowpea
 Download the following files and place in data directory:  
 -IITA_Core_FinalReport.xls    
 -ID-TVu CrossReference (Tchamba_11August2020).xls  
--IITA-Cowpea collection.xls 
--IITA-Cowpea collection-Cowpea Evaluation.xls
+-IITA-Cowpea collection.xls   
+-IITA-Cowpea collection-Cowpea Evaluation.xls  
 
 Download worldclim 2.1 bioclim variables at 30 sec resolution:
 ```
