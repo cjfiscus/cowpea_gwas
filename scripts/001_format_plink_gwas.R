@@ -53,9 +53,14 @@ write.table(out, "../data/cowpea.tped", sep=" ", quote=F, row.names=F, col.names
 ##########
 
 # FORMAT PHENOTYPES INTO TFAM
+## phenotypes
 ## read in data
 df1<-read_excel("../data/ID-TVu CrossReference (Tchamba_11August2020).xls", sheet="Cowpea characterization")
-df1<-df1[toupper(df1$`Accession name`) %in% toupper(samps),]
+df2<-read_excel("../data/IITA-Cowpea collection-Cowpea Evaluation.xls")
+df1<-merge(df1, df2, by="ID")
+df1<-df1[df1$`Accession name` %in% samps,]
+df1$`Thrips screening`<-NULL
+df1$`Pod bugs screening`<-NULL
 
 ## generate list of columns to make into dummies (encode qual traits)
 dums<-as.data.frame(cbind(names(df1), unlist(lapply(df1, is.character))))
@@ -67,7 +72,7 @@ dums<-dums$V1
 ## subset numeric data & log
 df2<-df1[,!colnames(df1) %in% dums]
 df2$ID<-NULL
-df2[,2:ncol(df2)]<-log(df2[,2:ncol(df2)] + 1)
+df2[,2:ncol(df2)]<-log(df2[,2:ncol(df2)] + min(df2[,2:ncol(df2)], na.rm = T))
 
 ## code vars w/ dummy vars
 df<-dummy_cols(df, select_columns=dums, ignore_na=T)
@@ -84,6 +89,7 @@ df2$V2<-NULL
 df2<-df2[match(samps,df2$`Accession name`),]
 all.equal(df2$`Accession name`, samps)
 
+# format output
 ## add first five cols
 out2<-as.data.frame(cbind(df2$`Accession name`, df2$`Accession name`, 0, 0, 0))
 out2<-as.data.frame(cbind(out2, df2[,2:ncol(df2)]))
@@ -96,7 +102,7 @@ phenos<-phenos[,c("N", "trait")]
 
 ## remove duplicate phenotypes
 ### define dups
-ind<-c(seq(99,137), seq(192,245))
+ind<-c(seq(105,143), seq(198,251))
 dups<-phenos[row.names(phenos) %in% ind,2]
 
 ### rm dups from output
